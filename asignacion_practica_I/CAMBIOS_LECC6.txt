@@ -1,0 +1,12 @@
+CAMBIOS SUGERIDOS PARA SUBIR LA APLICACIÓN CI AL WEB HOSTING:
+---------------------------------------------
+
+1. application/helpers: Se eliminó el helper TCPDF (carpeta tcpdf y el archivo pdf_helper.php) para así remover 30 MB aprox de la aplicación.
+2. application/views/news: Se eliminó el archivo report1.php.
+3. application/views/news: Se modificó el archivo index.php removiendo el link para imprimir el reporte.
+3. application/controllers/News.php: Se eliminó la función report1 que imprimía el reporte.
+4. Se eliminó la carpeta "user_guide" para así remover 10 MB aprox de la aplicación.
+5. application/controllers/api/News.php: Se eliminaron los headers que permitían el acceso CORS. Además se modificó el final del nombre de la función deleteNews_delete por deleteNews_get, para así enviar el dato id por URL vía GET, ya que el hosting gratuito no permite el envío de datos vía PUT o DELETE, solamente POST o GET.
+6. application/config/config.php: Recordar cambiar la propiedad $config['base_url'] = 'AQUÍ VA LA NUEVA URL DEL HOSTING';
+7. application/config/rest.php: Permitir el acceso CORS desde otros dominios modificando a TRUE las propiedades ---> $config['check_cors'] = TRUE; y $config['allow_any_cors_domain'] = TRUE;
+8. application/config/database: Cambiar los datos de la BD con los nuevos que provee el hosting.
